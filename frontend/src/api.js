@@ -1,5 +1,9 @@
-
-const API_BASE_URL = "http://localhost:5000/api";
+// The backend address comes from an environment variable.
+// - On the live site (Netlify), VITE_API_BASE_URL will be the Render URL.
+// - On your laptop, no variable is set, so it falls back to localhost.
+const API_BASE_URL = (
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api"
+).replace(/\/+$/, ""); // removes any trailing "/" so URLs don't get double slashes
 
 // Common helper for handling API responses
 async function apiRequest(endpoint, options = {}) {
