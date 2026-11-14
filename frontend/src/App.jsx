@@ -71,6 +71,8 @@ function getRole(user, profile) {
   ).toLowerCase();
 }
 
+
+
 function AuthScreen({ onAuthenticated }) {
   const [mode, setMode] = useState("login");
   const [role, setRole] = useState("farmer");
@@ -117,6 +119,7 @@ function AuthScreen({ onAuthenticated }) {
 
         if (session?.access_token && user) {
           saveSession(session, user);
+
           onAuthenticated({
             accessToken: session.access_token,
             user,
@@ -176,28 +179,8 @@ function AuthScreen({ onAuthenticated }) {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "25px",
-        background: "linear-gradient(135deg, #edf5eb, #f8f8ef)",
-        boxSizing: "border-box",
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "440px",
-          background: "#fff",
-          padding: "36px",
-          borderRadius: "18px",
-          boxShadow: "0 15px 45px rgba(31, 69, 43, 0.10)",
-          boxSizing: "border-box",
-        }}
-      >
+    <div className="auth-screen">
+      <div className="auth-card">
         <div style={{ textAlign: "center", marginBottom: "25px" }}>
           <div
             style={{
@@ -221,7 +204,7 @@ function AuthScreen({ onAuthenticated }) {
           </h1>
 
           <p style={{ color: "#778477", fontSize: "13px", margin: 0 }}>
-            Your agricultural companion
+            Sell Where. Sell When. Sell Better.
           </p>
         </div>
 
@@ -407,6 +390,7 @@ function AuthScreen({ onAuthenticated }) {
     </div>
   );
 }
+
 
 function App() {
   const [activePage, setActivePage] = useState("Overview");
